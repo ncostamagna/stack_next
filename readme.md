@@ -68,6 +68,12 @@ function MyApp({ Component, pageProps }) {
 }
 ```
 
+when you need to add some Global Layout or Meta Tags
+
+### \_document
+
+Overwrite the Basic HTML structure, lets you edit only html code structure which means that you can't add javascript events in it.
+
 ### api
 
 backend and server side code
@@ -79,4 +85,4 @@ assets: images, icons, etc..
 ## styles
 
 - global.css: global css
-- Home.module.css: local css in each modules
+- Home.module.css: local css in each modules, in this case only in Home component (if you import this css file in Home component)
