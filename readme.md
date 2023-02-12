@@ -24,3 +24,20 @@ Router based by folder and files
 ## SEO
 
 search engine optimization. You're making the life of bots easier to discover your content
+
+# Create Project
+
+https://nextjs.org/docs/basic-features/typescript
+
+```sh
+# create nextjs project with typescript
+npx create-next-app@latest --ts
+
+npm run dev # starts the developer server
+npm run build # builds the app
+npm start # runs the built app in production mode
+
+```
+
+Upgrade next version: https://nextjs.org/docs/upgrading
+If you want to upgrade, you'll see all details (in the documentation) for possible breaking changue. For example, in 12 next version the target field mustn't be in next.config.js file
