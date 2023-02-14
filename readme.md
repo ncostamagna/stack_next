@@ -86,3 +86,13 @@ assets: images, icons, etc..
 
 - global.css: global css
 - Home.module.css: local css in each modules, in this case only in Home component (if you import this css file in Home component)
+
+# Routing
+
+## History API
+
+navigate the user back and forth between different pages, 3 differents routing
+
+- index router: default root page
+- nested files: /my-page ({nested - anidados})
+- define brackets: /my-page/[id]
