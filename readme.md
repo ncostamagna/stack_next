@@ -96,3 +96,38 @@ navigate the user back and forth between different pages, 3 differents routing
 - index router: default root page
 - nested files: /my-page ({nested - anidados})
 - define brackets: /my-page/[id]
+
+## Dynamic Routers
+
+for example if we have a coffe-store/[id].js file in page folder.
+
+We can user router.query for getting the id value
+
+```ts
+import {useRouter} from 'next/router'
+
+const Store = () => {
+  const router = useRouter()
+  const {id} = router.query
+  ...
+}
+```
+
+## Link
+
+We can use link for going to differents pages, without refresh the page.<br />
+Only for internal next page
+
+```ts
+import Link from "next/link";
+
+const SomePage = () => {
+  return (
+    <div>
+      <Link href="/coffee-store">
+        <a>coffee store</a>
+      </Link>
+    </div>
+  );
+};
+```
