@@ -1,3 +1,29 @@
+# Index
+
+- [React](#react)
+- [Benefits](#benefits)
+  - [Different Rendering technoques](#different-rendering-technoques)
+  - [Performance](#performance)
+  - [File Based Routing](#file-based-routing)
+  - [SEO](#seo)
+- [Create Project](#create-project)
+- [Project sctruct](#project-sctruct)
+  - [pages](#pages)
+    - [\_app](#--app)
+    - [\_document](#--document)
+    - [api](#api)
+  - [public](#public)
+  - [styles](#styles)
+- [Routing](#routing)
+  - [History API](#history-api)
+  - [Dynamic Routers](#dynamic-routers)
+  - [Link](#link)
+- [Style](#style)
+  - [Images](#images)
+  - [Font](#font)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # React
 
 about react in https://github.com/ncostamagna/react
@@ -84,6 +110,8 @@ assets: images, icons, etc..
 
 ## styles
 
+css files
+
 - global.css: global css
 - Home.module.css: local css in each modules, in this case only in Home component (if you import this css file in Home component)
 
@@ -124,10 +152,118 @@ import Link from "next/link";
 const SomePage = () => {
   return (
     <div>
-      <Link href="/coffee-store">
+      <Link href="/coffee-store/1234">
         <a>coffee store</a>
       </Link>
     </div>
   );
 };
+```
+
+# Style
+
+- global.css: global css
+- Home.module.css: local css in each modules, in this case only in Home component (if you import this css file in Home component)
+
+```css
+/* Home.module.css file */
+.container{
+  display:flex
+  align-items: center;
+}
+```
+
+```ts
+import styles from "../style/Home.module.css";
+
+const Home = () => {
+  return <div className={style.container}>...</div>;
+};
+```
+
+## Images
+
+We can use icons8.com for creating images, we can leave the image in public directory (we can create a static folder in public directory)<br />
+We can use next/image in Next, the imagen will be optimizing.
+NextJS'll optimice the images with less size and download the content on demand
+
+```ts
+import Image from "next/image";
+
+const Home = () => {
+  return (
+    <div>
+      <Image src="/static/my-img.png" width={700} height={400}></Image>
+    </div>
+  );
+};
+```
+
+## Font
+
+download in google fonts the ttf files and add these files in public/fonts<br />
+How apply this fonts, we import this font in \_document file
+
+```ts
+import Document, { Head, Html, Main, NextScript } from "next/document";
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/IBMPlexSans-Bold.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          ></link>
+          <link
+            rel="preload"
+            href="/fonts/IBMPlexSans-Regular.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          ></link>
+          <link
+            rel="preload"
+            href="/fonts/IBMPlexSans-SemiBold.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          ></link>
+        </Head>
+        <body>
+          <Main></Main>
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+```
+
+In order to make sure fonts get set correctly, you need to also use @font-face to apply those fonts correctly
+
+```css
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/IBMPlexSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 600;
+  src: url(/fonts/IBMPlexSans-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/IBMPlexSans-Bold.ttf) format("truetype");
+}
 ```
